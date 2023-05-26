@@ -1,8 +1,11 @@
 class PromptsController < ApplicationController
+    # PalmService is a class that interacts with the Palm API
+    include PalmService
 
     def create
-        @input = "Input: " + params[:prompt]
-        @response = "Response: " + params[:prompt]
+        @input = params[:prompt]
+        # @response = "Response: " + params[:prompt]
+        @response = post_to_palm(params[:prompt])
 
         @prompt = Prompt.create(input: @input, response: @response)
 
