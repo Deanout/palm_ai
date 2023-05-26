@@ -1,0 +1,8 @@
+<%= turbo_stream.append "responses", 
+    partial: "prompts/input", 
+    locals: { content: @prompt.input } %>
+<%= turbo_stream.append "responses", 
+    partial: "prompts/response", 
+    locals: { content: @prompt.response } %>
+<%= turbo_stream.replace "prompt_form", 
+    partial: "prompts/form" %>
